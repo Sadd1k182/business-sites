@@ -1,4 +1,4 @@
-name: Web Quality & Build CI
+name: Web Quality CI & Cloudflare Pages Deploy
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   verify-gps-pc-service:
-    name: Verify & Build (gps-pc-service)
+    name: Verify, Build & Playwright E2E (gps-pc-service)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -34,11 +34,55 @@ jobs:
       - name: ESLint check
         run: npm run lint
 
-      - name: Build static production site
+      - name: Build static production site (out/)
         run: npm run build
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Run Playwright layout & E2E tests
+      - name: Run Playwright layout, CSS & E2E tests
         run: npx playwright test
+
+      - name: Upload static site artifact (out/)
+        uses: actions/upload-artifact@v4
+        with:
+          name: gps-pc-service-static-out
+          path: sites/gps-pc-service/out
+          retention-days: 7
+
+  deploy-cloudflare-pages:
+    name: Deploy to Cloudflare Pages (gps-pc-service)
+    needs: verify-gps-pc-service
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Check Cloudflare credentials
+        id: cf-creds
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping Cloudflare Pages deploy via Actions because CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets are not set yet."
+          fi
+
+      - name: Download built static site (out/)
+        if: steps.cf-creds.outputs.configured == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: gps-pc-service-static-out
+          path: out
+
+      - name: Publish to Cloudflare Pages
+        if: steps.cf-creds.outputs.configured == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=gps-pc-service --branch=${{ github.head_ref || github.ref_name }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
