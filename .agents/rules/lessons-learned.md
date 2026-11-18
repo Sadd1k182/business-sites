@@ -7,7 +7,8 @@ trigger: always_on
 This file records concrete technical gotchas, visual/UX lessons, and project-specific rules discovered during development so they are never repeated.
 
 ## 1. Next.js 16 & Tailwind CSS v4 (Turbopack)
-- **Preserve `@tailwindcss/turbopack` in `next.config.ts`**: When modifying `next.config.ts` (e.g., adding `output: 'export'`), **never** remove the `turbopack.rules['*.css']` block. Removing it silently disables Tailwind compilation and renders unstyled HTML.
+- **Preserve `@tailwindcss/turbopack` in `next.config.ts`**: When modifying `next.config.ts` (e.g., adding `output: 'export'` or `basePath`), **never** remove the `turbopack.rules['*.css']` block. Removing it silently disables Tailwind compilation and renders unstyled HTML.
+- **GitHub Pages Subpath (`basePath`)**: Because GitHub Pages serves project sites under `/<repo-name>` (`/business-sites`), always pass `NEXT_PUBLIC_BASE_PATH=/business-sites` when building the static export for GitHub Pages so `/_next/static/...` CSS/font assets do not 404.
 - **No `new Date()` in Prerendered Server Components**: Next.js 16 Cache Components fails static prerendering (`next build`) if `new Date()` is called inside a static Server Component. Use static constants in `src/data/` or a client boundary.
 - **Do Not Run `next build` Over a Running `next dev`**: Running `npm run build` in the same folder while `npm run dev` is active overwrites `.next/` chunks and breaks dev server CSS until `next dev` is restarted.
 
