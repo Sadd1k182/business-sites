@@ -11,8 +11,8 @@ export function PcServicesSection() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3.5 py-1.5 text-sm font-semibold text-emerald-800">
-            <Laptop className="h-4 w-4" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 border border-emerald-200 px-3.5 py-1.5 text-sm font-semibold text-emerald-800">
+            <Laptop className="h-4 w-4 shrink-0" aria-hidden="true" />
             <span>{pcSection.label}</span>
           </span>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -29,11 +29,16 @@ export function PcServicesSection() {
             return (
               <div
                 key={service.title}
-                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm"
+                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs hover:border-emerald-300 transition-colors"
               >
                 <div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-sm">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-xs">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+                      {service.badge}
+                    </span>
                   </div>
                   <h3 className="mt-5 text-2xl font-bold text-slate-900">
                     {service.title}

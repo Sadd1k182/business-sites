@@ -1,3 +1,4 @@
+import { Camera } from 'lucide-react';
 import { siteContent } from '@/data/site-content';
 
 export function HowItWorksSection() {
@@ -19,19 +20,32 @@ export function HowItWorksSection() {
           {howItWorks.steps.map((step) => (
             <div
               key={step.number}
-              className="relative rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              className="relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-xs"
             >
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-base font-extrabold text-white">
-                {step.number}
-              </span>
-              <h3 className="mt-4 text-lg font-bold text-slate-900">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                {step.description}
-              </p>
+              <div>
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-base font-extrabold text-white shadow-xs">
+                  {step.number}
+                </span>
+                <h3 className="mt-4 text-lg font-bold text-slate-900">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-amber-200 bg-amber-50/80 px-6 py-4 text-slate-800">
+          <div className="flex items-center gap-3.5">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-slate-950">
+              <Camera className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <p className="text-sm sm:text-base font-medium leading-snug">
+              {howItWorks.tip}
+            </p>
+          </div>
         </div>
       </div>
     </section>
