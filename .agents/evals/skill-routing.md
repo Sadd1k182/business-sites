@@ -12,7 +12,7 @@ This reference maps user intents and lifecycle stages to the corresponding Skill
 | Verifying implementation against spec scenarios | `openspec-verify-change` | Traceability & build/test pass report |
 | Archiving a finished change into living specs | `openspec-archive-change` | Updated `openspec/specs/` + archived change folder |
 
-## 2. Engineering & Delivery Skills
+## 2. Engineering, Delivery & Continuous Learning Skills
 
 | User Intent | Skill to Activate |
 | :--- | :--- |
@@ -21,6 +21,7 @@ This reference maps user intents and lifecycle stages to the corresponding Skill
 | Debugging a layout bug, hydration mismatch, or build error | `investigate` |
 | Running dev server & checking mobile/desktop UI + OpenGraph | `preview-check` |
 | Finishing work, cleaning up slop, running reviews & committing | `deliver` |
+| Recording a user preference, correction, or bug post-mortem | `learn` (or `/learn`) |
 | Ending a coding session to resume later | `handoff` |
 
 ## 3. Specialized Subagents (`.agents/agents/`)
@@ -34,4 +35,4 @@ This reference maps user intents and lifecycle stages to the corresponding Skill
 | `security-reviewer` | When touching `.env`, API routes, Telegram/Viber chat forwarding, or forms |
 | `web-qa` | To write or verify unit/component tests and Next.js production builds |
 | `log-reader` | When Next.js, TypeScript, or npm/Playwright outputs huge error logs |
-| `git-committer` | To stage and create clean Conventional Commits |
+| `git-committer` | To stage, commit on a feature branch, push, and create a PR via `gh pr create` |
