@@ -1,12 +1,17 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('GPS & PC Service Landing Page', () => {
-  test('renders Ukrainian content, OpenGraph tags, and valid contact CTAs', async ({
+  test('renders Ukrainian content, Tailwind styles, OpenGraph tags, and valid contact CTAs', async ({
     page,
   }) => {
     await page.goto('/');
 
     await expect(page).toHaveTitle(/Прошивка GPS-навігаторів/);
+
+    const heroBg = await page.evaluate(
+      () => getComputedStyle(document.querySelector('section')!).backgroundColor
+    );
+    expect(heroBg).not.toBe('rgba(0, 0, 0, 0)');
 
     const ogTitle = await page
       .locator('meta[property="og:title"]')
