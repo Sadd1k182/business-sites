@@ -1,0 +1,57 @@
+{
+  "bash-safety-guard": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ./hooks/pre-bash-safety.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "protect-generated-files": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "edit_file|write_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ./hooks/pre-edit-protect.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "post-edit-web-format": {
+    "enabled": true,
+    "PostToolUse": [
+      {
+        "matcher": "edit_file|write_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ./hooks/post-edit-checks.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  },
+  "stop-quality-gate": {
+    "enabled": true,
+    "Stop": [
+      {
+        "type": "command",
+        "command": "sh ./hooks/stop-done-check.sh",
+        "timeout": 25
+      }
+    ]
+  }
+}
