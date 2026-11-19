@@ -1,10 +1,13 @@
+'use client';
+
 import { Check, Compass, Globe, Languages, Truck } from 'lucide-react';
-import { siteContent } from '@/data/site-content';
+import { useLanguage } from '@/context/LanguageContext';
 
 const serviceIcons = [Languages, Truck, Compass] as const;
 
 export function GpsServicesSection() {
-  const { gpsSection } = siteContent;
+  const { content } = useLanguage();
+  const { gpsSection } = content;
 
   return (
     <section id="gps-services" className="py-14 sm:py-20 bg-white scroll-mt-16">

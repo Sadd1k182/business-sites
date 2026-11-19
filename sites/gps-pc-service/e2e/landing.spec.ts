@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('GPS & PC Service Landing Page', () => {
-  test('renders Ukrainian content, Tailwind styles, OpenGraph tags, and valid contact CTAs', async ({
+  test('renders Ukrainian content, switches to English via UA/EN toggle, and has valid contact CTAs', async ({
     page,
   }) => {
     await page.goto('/');
@@ -24,9 +24,24 @@ test.describe('GPS & PC Service Landing Page', () => {
       })
     ).toBeVisible();
 
+    await page.getByRole('button', { name: 'EN', exact: true }).click();
+    await expect(
+      page.getByRole('heading', {
+        name: /Ukrainian Localization & Europe Maps for GPS Navigators/,
+      })
+    ).toBeVisible();
+
+    await page.getByRole('button', { name: 'UA', exact: true }).click();
+    await expect(
+      page.getByRole('heading', {
+        name: /Українська мова та свіжі карти для GPS-навігаторів/,
+      })
+    ).toBeVisible();
+
     await expect(page.locator('a[href^="tel:"]').first()).toBeVisible();
     await expect(page.locator('a[href^="viber://"]').first()).toBeVisible();
     await expect(page.locator('a[href^="https://t.me/"]').first()).toBeVisible();
+    await expect(page.locator('a[href^="https://wa.me/"]').first()).toBeVisible();
   });
 
   for (const viewport of [

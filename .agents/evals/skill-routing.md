@@ -16,8 +16,9 @@ This reference maps user intents and lifecycle stages to the corresponding Skill
 
 | User Intent | Skill to Activate |
 | :--- | :--- |
+| Designing a new landing page, visual refresh, palette, typography, or layout polish | `frontend-design` |
 | Writing or refactoring code cleanly without bloat | `karpathy-guidelines` |
-| Scaffolding a new page section or interactive widget | `new-section` |
+| Scaffolding a new page section or interactive widget (data + Server/Client wiring) | `new-section` |
 | Debugging a layout bug, hydration mismatch, or build error | `investigate` |
 | Running dev server & checking mobile/desktop UI + OpenGraph | `preview-check` |
 | Finishing work, cleaning up slop, running reviews & committing | `deliver` |

@@ -1,8 +1,11 @@
+'use client';
+
 import { Check, Laptop, MonitorCheck, ShieldCheck } from 'lucide-react';
-import { siteContent } from '@/data/site-content';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function PcServicesSection() {
-  const { pcSection } = siteContent;
+  const { content } = useLanguage();
+  const { pcSection } = content;
 
   return (
     <section

@@ -1,8 +1,11 @@
+'use client';
+
 import { Camera } from 'lucide-react';
-import { siteContent } from '@/data/site-content';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function HowItWorksSection() {
-  const { howItWorks } = siteContent;
+  const { content } = useLanguage();
+  const { howItWorks } = content;
 
   return (
     <section id="how-it-works" className="py-14 sm:py-18 bg-white scroll-mt-16">
