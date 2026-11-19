@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { ClarityAnalytics } from '@/components/ClarityAnalytics';
+import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { siteContent } from '@/data/site-content';
 import './globals.css';
 
@@ -31,7 +33,7 @@ const localBusinessSchema = {
   name: siteContent.contact.masterName,
   description: siteContent.seo.description,
   telephone: siteContent.contact.phoneRaw,
-  availableLanguage: ['uk'],
+  availableLanguage: ['uk', 'en'],
   knowsAbout: [
     'Прошивка GPS-навігаторів Garmin та iGO',
     'Українська мова та карти Європи для вантажівок',
@@ -55,7 +57,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-slate-900 font-sans">
+        <ClarityAnalytics />
         {children}
+        <ScrollToTopButton />
       </body>
     </html>
   );
