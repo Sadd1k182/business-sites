@@ -48,6 +48,7 @@ jobs:
       - name: Build static production site for GitHub Pages (out/)
         env:
           NEXT_PUBLIC_BASE_PATH: /business-sites
+          NEXT_PUBLIC_CLARITY_ID: ${{ vars.NEXT_PUBLIC_CLARITY_ID }}
         run: npm run build
 
       - name: Upload GitHub Pages artifact
