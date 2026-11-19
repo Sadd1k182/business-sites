@@ -1,8 +1,11 @@
+'use client';
+
 import { ChevronDown } from 'lucide-react';
-import { siteContent } from '@/data/site-content';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function FaqSection() {
-  const { faqs } = siteContent;
+  const { content } = useLanguage();
+  const { faqSection, faqs } = content;
 
   return (
     <section
@@ -12,10 +15,10 @@ export function FaqSection() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            Часті запитання
+            {faqSection.title}
           </h2>
           <p className="mt-3 text-lg text-slate-600">
-            Відповіді на найпоширеніші питання водіїв та власників ноутбуків
+            {faqSection.subtitle}
           </p>
         </div>
 

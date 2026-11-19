@@ -6,10 +6,11 @@ import { HeroSection } from '@/components/HeroSection';
 import { HowItWorksSection } from '@/components/HowItWorksSection';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { PcServicesSection } from '@/components/PcServicesSection';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 export default function HomePage() {
   return (
-    <>
+    <LanguageProvider>
       <Header />
       <main className="flex-1">
         <HeroSection />
@@ -20,6 +21,6 @@ export default function HomePage() {
       </main>
       <ContactSection />
       <MobileStickyBar />
-    </>
+    </LanguageProvider>
   );
 }

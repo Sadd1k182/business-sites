@@ -1,16 +1,18 @@
+'use client';
+
 import {
   ArrowRight,
   Compass,
   Laptop,
-  MessageCircle,
   PhoneCall,
-  Send,
   Truck,
 } from 'lucide-react';
-import { siteContent } from '@/data/site-content';
+import { TelegramIcon, ViberIcon } from '@/components/BrandIcons';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function HeroSection() {
-  const { hero, contact } = siteContent;
+  const { content } = useLanguage();
+  const { hero, contact } = content;
 
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white py-12 sm:py-16 lg:py-20">
@@ -46,10 +48,10 @@ export function HeroSection() {
 
               <a
                 href={contact.viberUrl}
-                className="inline-flex min-h-12 shrink-0 whitespace-nowrap items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3.5 text-base font-bold text-white hover:bg-purple-500 transition-colors"
+                className="inline-flex min-h-12 shrink-0 whitespace-nowrap items-center justify-center gap-2.5 rounded-xl bg-purple-600 px-5 py-3.5 text-base font-bold text-white hover:bg-purple-500 transition-colors"
               >
-                <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
-                <span>Написати у Viber</span>
+                <ViberIcon className="h-5 w-5 shrink-0" />
+                <span>{contact.viberLabel}</span>
               </a>
 
               <a
@@ -58,7 +60,7 @@ export function HeroSection() {
                 rel="noopener noreferrer"
                 className="inline-flex min-h-12 shrink-0 whitespace-nowrap items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-3.5 text-base font-bold text-white hover:bg-sky-500 transition-colors"
               >
-                <Send className="h-5 w-5 shrink-0" aria-hidden="true" />
+                <TelegramIcon className="h-5 w-5 shrink-0" />
                 <span>Telegram</span>
               </a>
             </div>
@@ -75,13 +77,13 @@ export function HeroSection() {
                 </span>
                 <div>
                   <span className="block text-xs font-bold uppercase tracking-wider text-amber-400">
-                    1. Для водіїв фур та авто
+                    {hero.card1Tag}
                   </span>
                   <h2 className="text-lg font-extrabold text-white group-hover:text-blue-300 transition-colors">
-                    GPS-навігатори (Garmin, iGO)
+                    {hero.card1Title}
                   </h2>
                   <p className="mt-0.5 text-xs sm:text-sm text-slate-400">
-                    Українська мова • Карти Європи 2026 • TIR
+                    {hero.card1Meta}
                   </p>
                 </div>
               </div>
@@ -101,13 +103,13 @@ export function HeroSection() {
                 </span>
                 <div>
                   <span className="block text-xs font-bold uppercase tracking-wider text-emerald-400">
-                    2. Для дому та роботи
+                    {hero.card2Tag}
                   </span>
                   <h2 className="text-lg font-extrabold text-white group-hover:text-emerald-300 transition-colors">
-                    Windows та Linux «під ключ»
+                    {hero.card2Title}
                   </h2>
                   <p className="mt-0.5 text-xs sm:text-sm text-slate-400">
-                    Драйвери • Офісні програми • Без реклами
+                    {hero.card2Meta}
                   </p>
                 </div>
               </div>
