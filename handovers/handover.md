@@ -13,7 +13,8 @@
 
 This workspace hosts two family business card / service websites built with **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4**:
 
-1. **`sites/gps-pc-service/` — Dad's GPS Navigator Firmware & PC Setup Service *(Built & Live)***
+1. **`sites/gps-pc-service/` — Dad's GPS Navigator Firmware & PC Setup Service in Rivne (м. Рівне) *(Built & Live)***
+   - **Location**: **Рівне (Rivne, Ukraine)** — local SEO (`<title>`, OpenGraph, Hero badge, Contact section, `LocalBusiness` PostalAddress/areaServed JSON-LD, and `FAQPage` JSON-LD) is configured specifically for **м. Рівне та Рівненська область**.
    - **Audience A (Truck & Car Drivers)**: Ukrainian drivers (mostly word-of-mouth referrals via Viber/Telegram/WhatsApp during their spare time) who bought a GPS navigator (Garmin dēzl/Drive/nüvi, iGO Primo/NextGen, Android tablets, WinCE) with English-only menus or outdated maps and need **Ukrainian interface/voice + Europe/UK/Ukraine truck (TIR/ADR) maps**.
    - **Audience B (Home PC / Laptop Owners)**: Non-tech-savvy users who need a complete, ready-to-use **Windows 10/11 or Linux Mint installation suite («під ключ»)** with all drivers, Office/document apps, ad-blocking browser, and 100% personal photo/document preservation.
 2. **`sites/property-valuation/` — Father-in-Law's Property Valuation Consultant Site *(Planned Next)***
