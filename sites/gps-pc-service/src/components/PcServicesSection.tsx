@@ -1,71 +1,60 @@
 'use client';
 
-import { Check, Laptop, MonitorCheck, ShieldCheck } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export function PcServicesSection() {
-  const { content } = useLanguage();
+  const { locale, content } = useLanguage();
   const { pcSection } = content;
 
   return (
     <section
       id="pc-services"
-      className="py-14 sm:py-20 bg-slate-100 border-y border-slate-200 scroll-mt-16"
+      className="py-16 sm:py-24 bg-[#F6F7F9] border-b border-slate-200 scroll-mt-16"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 border border-emerald-200 px-3.5 py-1 text-xs sm:text-sm font-semibold text-emerald-800">
-              <Laptop className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>{pcSection.label}</span>
-            </span>
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4 space-y-5">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl leading-tight">
               {pcSection.title}
             </h2>
-            <p className="mt-2 text-base text-slate-600">
+            <p className="text-base text-slate-600 leading-relaxed">
               {pcSection.subtitle}
             </p>
+
+            <div className="pt-2">
+              <div className="text-xs font-semibold text-slate-500 mb-2.5">
+                {locale === 'uk' ? 'Що входить у налаштування:' : 'Included with every setup:'}
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {pcSection.featurePills.map((pill) => (
+                  <span
+                    key={pill}
+                    className="inline-block rounded-md border border-slate-200/90 bg-white px-2.5 py-1 text-xs font-semibold text-slate-800"
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {pcSection.featurePills.map((pill) => (
-              <span
-                key={pill}
-                className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
-                <span>{pill}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {pcSection.services.map((service, index) => {
-            const Icon = index === 0 ? MonitorCheck : ShieldCheck;
-            return (
+          <div className="lg:col-span-8 divide-y divide-slate-200 border-t border-b border-slate-200">
+            {pcSection.services.map((service) => (
               <div
                 key={service.title}
-                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:border-emerald-300 transition-colors"
+                className="py-7 first:pt-6 last:pb-6 grid gap-4 sm:grid-cols-12"
               >
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-600 text-white">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
-                      {service.badge}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-xl font-bold text-slate-900">
+                <div className="sm:col-span-5 pr-2">
+                  <h3 className="font-display text-lg font-bold text-slate-950 leading-snug">
                     {service.title}
                   </h3>
-                  <p className="mt-1.5 text-sm text-slate-600">
+                  <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
 
-                <ul className="mt-5 space-y-2.5 border-t border-slate-100 pt-4">
+                <ul className="sm:col-span-7 space-y-2.5 sm:pl-4 sm:border-l sm:border-slate-200/80">
                   {service.highlights.map((item) => (
                     <li
                       key={item}
@@ -80,8 +69,8 @@ export function PcServicesSection() {
                   ))}
                 </ul>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 'use client';
 
-import { Clock, MapPin, PhoneCall } from 'lucide-react';
+import { PhoneCall } from 'lucide-react';
 import {
   TelegramIcon,
   ViberIcon,
@@ -15,73 +15,65 @@ export function ContactSection() {
   return (
     <footer
       id="contact"
-      className="bg-slate-900 text-white pt-16 pb-28 sm:pb-16 scroll-mt-16"
+      className="bg-[#0B1118] text-white pt-16 pb-28 sm:pb-16 border-t border-slate-800 scroll-mt-16"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="rounded-3xl border border-slate-800 bg-slate-800/70 p-5 sm:p-10 lg:p-12">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6 space-y-4">
-              <h2 className="text-2xl font-extrabold tracking-tight sm:text-4xl">
-                {contact.ctaHeading}
-              </h2>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-                {contact.ctaSubtitle}
-              </p>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start pb-14 border-b border-slate-800">
+          <div className="lg:col-span-6 space-y-4">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight sm:text-3xl leading-tight">
+              {contact.ctaHeading}
+            </h2>
+            <p className="text-base text-slate-300 leading-relaxed max-w-[56ch]">
+              {contact.ctaSubtitle}
+            </p>
 
-              <div className="space-y-3 pt-2 text-sm sm:text-base text-slate-300">
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 shrink-0 text-amber-400" aria-hidden="true" />
-                  <span>{contact.city}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 shrink-0 text-amber-400" aria-hidden="true" />
-                  <span>{contact.schedule}</span>
-                </div>
-              </div>
+            <div className="pt-2 space-y-1.5 text-sm text-slate-400">
+              <p className="font-medium text-slate-200">{contact.city}</p>
+              <p>{contact.schedule}</p>
             </div>
+          </div>
 
-            <div className="lg:col-span-6 grid gap-3 sm:grid-cols-2">
-              <a
-                href={`tel:${contact.phoneRaw}`}
-                className="sm:col-span-2 flex min-h-14 whitespace-nowrap items-center justify-center gap-2.5 rounded-2xl bg-amber-500 px-4 sm:px-6 py-4 text-base sm:text-lg font-extrabold text-slate-950 shadow-md hover:bg-amber-400 transition-colors"
-              >
-                <PhoneCall className="h-5 w-5 shrink-0" aria-hidden="true" />
-                <span className="hidden sm:inline">{contact.callLabel}: </span>
-                <span>{contact.phoneDisplay}</span>
-              </a>
+          <div className="lg:col-span-6 grid gap-3 sm:grid-cols-2">
+            <a
+              href={`tel:${contact.phoneRaw}`}
+              className="sm:col-span-2 flex min-h-13 whitespace-nowrap items-center justify-center gap-2.5 rounded-lg bg-[#F59E0B] px-5 py-3.5 text-base sm:text-lg font-extrabold text-slate-950 hover:bg-amber-400 transition-colors"
+            >
+              <PhoneCall className="h-5 w-5 shrink-0" aria-hidden="true" />
+              <span className="hidden sm:inline">{contact.callLabel}: </span>
+              <span>{contact.phoneDisplay}</span>
+            </a>
 
-              <a
-                href={contact.viberUrl}
-                className="flex min-h-13 whitespace-nowrap items-center justify-center gap-2.5 rounded-2xl bg-purple-600 px-4 py-3.5 text-base font-bold text-white hover:bg-purple-500 transition-colors"
-              >
-                <ViberIcon className="h-5 w-5 shrink-0" />
-                <span>{contact.viberLabel}</span>
-              </a>
+            <a
+              href={contact.viberUrl}
+              className="flex min-h-12 whitespace-nowrap items-center justify-center gap-2.5 rounded-lg bg-[#7360F2] px-4 py-3 text-base font-bold text-white hover:bg-[#624DE8] transition-colors"
+            >
+              <ViberIcon className="h-5 w-5 shrink-0" />
+              <span>{contact.viberLabel}</span>
+            </a>
 
-              <a
-                href={contact.telegramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex min-h-13 whitespace-nowrap items-center justify-center gap-2.5 rounded-2xl bg-sky-600 px-4 py-3.5 text-base font-bold text-white hover:bg-sky-500 transition-colors"
-              >
-                <TelegramIcon className="h-5 w-5 shrink-0" />
-                <span>{contact.telegramLabel}</span>
-              </a>
+            <a
+              href={contact.telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-12 whitespace-nowrap items-center justify-center gap-2.5 rounded-lg bg-[#229ED9] px-4 py-3 text-base font-bold text-white hover:bg-[#1C8EC4] transition-colors"
+            >
+              <TelegramIcon className="h-5 w-5 shrink-0" />
+              <span>{contact.telegramLabel}</span>
+            </a>
 
-              <a
-                href={contact.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="sm:col-span-2 flex min-h-13 whitespace-nowrap items-center justify-center gap-2.5 rounded-2xl border border-slate-700 bg-slate-900/80 px-4 py-3.5 text-base font-semibold text-emerald-400 hover:bg-slate-900 transition-colors"
-              >
-                <WhatsAppIcon className="h-5 w-5 shrink-0" />
-                <span>{contact.whatsappLabel}</span>
-              </a>
-            </div>
+            <a
+              href={contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:col-span-2 flex min-h-12 whitespace-nowrap items-center justify-center gap-2.5 rounded-lg border border-slate-700 bg-[#111923] px-4 py-3 text-base font-semibold text-emerald-400 hover:bg-slate-800 transition-colors"
+            >
+              <WhatsAppIcon className="h-5 w-5 shrink-0" />
+              <span>{contact.whatsappLabel}</span>
+            </a>
           </div>
         </div>
 
-        <div className="mt-10 text-center text-sm text-slate-400">
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-slate-400">
           <p>
             © 2026 {contact.masterName}. {contact.copyrightSuffix}
           </p>

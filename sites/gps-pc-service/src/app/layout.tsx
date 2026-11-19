@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Manrope } from 'next/font/google';
 import { ClarityAnalytics } from '@/components/ClarityAnalytics';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { siteContent } from '@/data/site-content';
@@ -8,6 +8,12 @@ import './globals.css';
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin', 'cyrillic'],
+});
+
+const manrope = Manrope({
+  variable: '--font-manrope',
+  subsets: ['latin', 'cyrillic'],
+  weight: ['600', '700', '800'],
 });
 
 export const metadata: Metadata = {
@@ -80,7 +86,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk" className={`${inter.variable} scroll-smooth antialiased`}>
+    <html
+      lang="uk"
+      className={`${inter.variable} ${manrope.variable} scroll-smooth antialiased`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -89,7 +98,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-slate-900 font-sans">
+      <body className="min-h-screen flex flex-col bg-[#F6F7F9] text-slate-900 font-sans">
         <ClarityAnalytics />
         {children}
         <ScrollToTopButton />
