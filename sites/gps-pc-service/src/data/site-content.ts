@@ -99,7 +99,7 @@ export const siteTranslations: Record<Locale, SiteLocaleContent> = {
   uk: {
     nav: {
       brandTitle: 'GPS та ПК Сервіс',
-      brandSubtitle: 'Навігатори TIR • Windows • Linux',
+      brandSubtitle: 'м. Рівне • Навігатори TIR • Windows • Linux',
       gps: 'Навігатори',
       pc: 'Windows і Linux',
       howItWorks: 'Як працюємо',
@@ -109,28 +109,28 @@ export const siteTranslations: Record<Locale, SiteLocaleContent> = {
     },
     contact: {
       ...sharedContactUrls,
-      masterName: 'Майстер GPS та ПК Сервісу',
-      city: 'Особистий прийом за домовленістю',
+      masterName: 'Майстер GPS та ПК Сервісу (м. Рівне)',
+      city: 'м. Рівне — особистий прийом за домовленістю',
       schedule: 'Пн–Нд: у зручний для вас час (між рейсами або у вихідні)',
-      ctaHeading: 'Потрібно оновити навігатор або налаштувати комп’ютер?',
+      ctaHeading: 'Потрібно оновити навігатор або налаштувати комп’ютер у Рівному?',
       ctaSubtitle:
         'Зателефонуйте або напишіть у зручний месенджер. Можна одразу надіслати фото навігатора чи моделі ноутбука — підкажемо все по суті.',
       callLabel: 'Зателефонувати',
       viberLabel: 'Написати у Viber',
       telegramLabel: 'Написати у Telegram',
       whatsappLabel: 'Написати у WhatsApp',
-      copyrightSuffix: 'Прошивка GPS-навігаторів та налаштування Windows / Linux.',
+      copyrightSuffix: 'Прошивка GPS-навігаторів та налаштування Windows / Linux у Рівному.',
     },
     seo: {
-      title: 'Прошивка GPS-навігаторів (Українська мова, Карти для фур) та Встановлення Windows/Linux',
+      title: 'Прошивка GPS-навігаторів у Рівному (Garmin, iGO для фур) та Встановлення Windows/Linux',
       description:
-        'Встановлення української мови та свіжих карт Європи 2026 на GPS-навігатори (Garmin, iGO) для вантажівок і легкових авто. Налаштування Windows та Linux під ключ.',
+        'Прошивка, українська мова та свіжі карти Європи 2026 на GPS-навігатори (Garmin, iGO) для вантажівок і авто у м. Рівне. Встановлення Windows та Linux під ключ.',
     },
     hero: {
-      badge: 'Налаштування у ваш вільний час • Перевірка на місці',
+      badge: 'м. Рівне • Налаштування у ваш вільний час • Перевірка на місці',
       title: 'Українська мова та свіжі карти для GPS-навігаторів + Windows і Linux «під ключ»',
       subtitle:
-        'Готуємо вантажні (TIR) та легкові навігатори до рейсів по Європі й Україні, а також повністю налаштовуємо домашні ноутбуки та ПК для зручної роботи без зайвого клопоту.',
+        'Готуємо вантажні (TIR) та легкові навігатори у Рівному до рейсів по Європі й Україні, а також повністю налаштовуємо домашні ноутбуки та ПК для зручної роботи.',
       card1Tag: '1. Для водіїв фур та авто',
       card1Title: 'GPS-навігатори (Garmin, iGO)',
       card1Meta: 'Українська мова • Карти Європи 2026 • TIR',
@@ -272,7 +272,7 @@ export const siteTranslations: Record<Locale, SiteLocaleContent> = {
   en: {
     nav: {
       brandTitle: 'GPS & PC Service',
-      brandSubtitle: 'Truck GPS (TIR) • Windows • Linux',
+      brandSubtitle: 'Rivne • Truck GPS (TIR) • Windows • Linux',
       gps: 'GPS Navigators',
       pc: 'Windows & Linux',
       howItWorks: 'How It Works',
@@ -282,25 +282,25 @@ export const siteTranslations: Record<Locale, SiteLocaleContent> = {
     },
     contact: {
       ...sharedContactUrls,
-      masterName: 'GPS & PC Service Specialist',
-      city: 'In-person drop-off by appointment',
+      masterName: 'GPS & PC Service Specialist (Rivne)',
+      city: 'Rivne, Ukraine — in-person drop-off by appointment',
       schedule: 'Mon–Sun: flexible hours during your off-duty or weekend time',
-      ctaHeading: 'Need a GPS map/firmware update or a clean PC setup?',
+      ctaHeading: 'Need a GPS map/firmware update or a clean PC setup in Rivne?',
       ctaSubtitle:
         'Call or message on Viber, Telegram, or WhatsApp. You can send a quick photo of your GPS navigator or laptop model and we will confirm everything right away.',
       callLabel: 'Call',
       viberLabel: 'Message on Viber',
       telegramLabel: 'Message on Telegram',
       whatsappLabel: 'Message on WhatsApp',
-      copyrightSuffix: 'Truck & Car GPS Firmware/Maps and Turn-Key Windows / Linux Setup.',
+      copyrightSuffix: 'Truck & Car GPS Firmware/Maps and Turn-Key Windows / Linux Setup in Rivne.',
     },
     seo: {
-      title: 'Truck & Car GPS Firmware / Maps (Garmin, iGO) & Turn-Key Windows/Linux Setup',
+      title: 'Truck & Car GPS Firmware / Maps (Garmin, iGO) & Turn-Key Windows/Linux Setup in Rivne',
       description:
-        'Ukrainian & European map/firmware installation on Garmin and iGO GPS navigators for trucks (TIR) and cars. Complete turn-key Windows & Linux installation.',
+        'Ukrainian & European map/firmware installation on Garmin and iGO GPS navigators for trucks (TIR) and cars in Rivne. Complete turn-key Windows & Linux installation.',
     },
     hero: {
-      badge: 'Setup during your spare time • Tested on the spot',
+      badge: 'Rivne • Setup during your spare time • Tested on the spot',
       title: 'Ukrainian Localization & Europe Maps for GPS Navigators + Turn-Key Windows & Linux',
       subtitle:
         'We prepare truck (TIR) and car GPS navigators for European routes with Ukrainian menus & voice guidance, and set up home laptops & PCs with all drivers and everyday apps ready out of the box.',
