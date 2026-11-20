@@ -10,34 +10,39 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-16 sm:py-24 bg-slate-50 border-t border-slate-200 scroll-mt-16"
+      className="border-b border-slate-200 bg-[#F8FAFC] py-16 md:py-24 scroll-mt-16"
     >
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <span className="mb-2 block font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
+            {faqSection.eyebrow}
+          </span>
+          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
             {faqSection.title}
           </h2>
-          <p className="mt-3 text-lg text-slate-600">
+          <p className="mt-2 text-sm text-slate-600 sm:text-base">
             {faqSection.subtitle}
           </p>
         </div>
 
-        <div className="mt-10 space-y-4">
+        <div className="space-y-3.5">
           {faqs.map((faq) => (
             <details
               key={faq.question}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-xs open:border-blue-300"
+              className="group rounded-xl border border-slate-200 bg-white transition-colors hover:border-slate-300 open:border-blue-200"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-bold text-slate-900">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl p-5 text-left text-sm font-bold text-slate-900 sm:text-base">
                 <span>{faq.question}</span>
                 <ChevronDown
-                  className="h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180"
+                  className="h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 group-open:rotate-180 group-open:text-blue-600"
                   aria-hidden="true"
                 />
               </summary>
-              <p className="mt-4 text-base text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
-                {faq.answer}
-              </p>
+              <div className="px-5 pb-5">
+                <p className="border-t border-slate-100 pt-3 text-sm leading-relaxed text-slate-600">
+                  {faq.answer}
+                </p>
+              </div>
             </details>
           ))}
         </div>

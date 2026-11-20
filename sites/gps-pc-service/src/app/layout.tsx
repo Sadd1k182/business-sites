@@ -1,13 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { JetBrains_Mono, Manrope } from 'next/font/google';
 import { ClarityAnalytics } from '@/components/ClarityAnalytics';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { siteContent } from '@/data/site-content';
 import './globals.css';
 
-const inter = Inter({
-  variable: '--font-inter',
+const manrope = Manrope({
+  variable: '--font-manrope',
   subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
+  subsets: ['latin', 'cyrillic'],
+  weight: ['500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -56,7 +63,7 @@ const structuredDataGraph = {
       availableLanguage: ['uk', 'en'],
       knowsAbout: [
         'Прошивка GPS-навігаторів Garmin та iGO у Рівному',
-        'Українська мова та карти Європи для вантажівок (TIR)',
+        'Свіжі карти Європи для вантажівок (TIR) та українська мова за підтримки моделі',
         'Встановлення Windows та Linux під ключ у Рівному',
       ],
     },
@@ -80,7 +87,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk" className={`${inter.variable} scroll-smooth antialiased`}>
+    <html
+      lang="uk"
+      className={`${manrope.variable} ${jetBrainsMono.variable} scroll-smooth antialiased`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -89,7 +99,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-slate-900 font-sans">
+      <body className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A] font-sans selection:bg-blue-100 selection:text-blue-900">
         <ClarityAnalytics />
         {children}
         <ScrollToTopButton />
