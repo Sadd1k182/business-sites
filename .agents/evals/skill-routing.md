@@ -17,6 +17,8 @@ This reference maps user intents and lifecycle stages to the corresponding Skill
 | User Intent | Skill to Activate |
 | :--- | :--- |
 | Designing a new landing page, visual refresh, palette, typography, or layout polish | `frontend-design` |
+| Bootstrapping a persisted design system (`MASTER.md`/tokens) or running deep UX/form/a11y/chart lookups | `ui-ux-pro-max` (global) |
+| Auditing a landing page for conversion friction, CTA clarity, and ranked CRO fixes | `conversion-audit` |
 | Writing or refactoring code cleanly without bloat | `karpathy-guidelines` |
 | Scaffolding a new page section or interactive widget (data + Server/Client wiring) | `new-section` |
 | Debugging a layout bug, hydration mismatch, or build error | `investigate` |
