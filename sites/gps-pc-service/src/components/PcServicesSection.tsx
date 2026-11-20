@@ -1,85 +1,136 @@
 'use client';
 
-import { Check, Laptop, MonitorCheck, ShieldCheck } from 'lucide-react';
+import {
+  BadgeCheck,
+  FileText,
+  Gauge,
+  Laptop,
+  Monitor,
+  MousePointerClick,
+  Shield,
+  ShieldCheck,
+  Terminal,
+} from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+
+const winSpecIcons = [BadgeCheck, FileText, Shield] as const;
+const linuxSpecIcons = [MousePointerClick, Gauge, ShieldCheck] as const;
 
 export function PcServicesSection() {
   const { content } = useLanguage();
-  const { pcSection } = content;
+  const { pcSection, contact } = content;
 
   return (
     <section
       id="pc-services"
-      className="py-14 sm:py-20 bg-slate-100 border-y border-slate-200 scroll-mt-16"
+      className="border-b border-slate-200 bg-[#F8FAFC] py-16 md:py-24 scroll-mt-16"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 border border-emerald-200 px-3.5 py-1 text-xs sm:text-sm font-semibold text-emerald-800">
-              <Laptop className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>{pcSection.label}</span>
-            </span>
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-              {pcSection.title}
-            </h2>
-            <p className="mt-2 text-base text-slate-600">
-              {pcSection.subtitle}
-            </p>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 max-w-3xl">
+          <div className="mb-3 inline-flex items-center gap-1.5 rounded-md border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">
+            <Laptop className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <span>{pcSection.label}</span>
           </div>
+          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            {pcSection.title}
+          </h2>
+          <p className="mt-3 text-base text-slate-600">{pcSection.subtitle}</p>
 
-          <div className="flex flex-wrap gap-2">
-            {pcSection.featurePills.map((pill) => (
-              <span
-                key={pill}
-                className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
-                <span>{pill}</span>
-              </span>
-            ))}
+          <div className="mt-5 flex flex-wrap gap-2">
+            {pcSection.featurePills.map((pill, index) => {
+              let pillClass =
+                'rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600';
+              if (index === 2) {
+                pillClass =
+                  'rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-800';
+              } else if (index === 4) {
+                pillClass =
+                  'rounded-md border border-amber-200/80 bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-900';
+              }
+              return (
+                <span key={pill} className={pillClass}>
+                  {pill}
+                </span>
+              );
+            })}
           </div>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {pcSection.services.map((service, index) => {
-            const Icon = index === 0 ? MonitorCheck : ShieldCheck;
+            const isWindows = index === 0;
+            const CardIcon = isWindows ? Monitor : Terminal;
+            const specIcons = isWindows ? winSpecIcons : linuxSpecIcons;
             return (
-              <div
+              <article
                 key={service.title}
-                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:border-emerald-300 transition-colors"
+                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-7 hover:border-slate-300 transition-colors sm:p-8"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-600 text-white">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+                  <div className="mb-4 flex items-center justify-between gap-3">
+                    <span
+                      className={
+                        isWindows
+                          ? 'rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600'
+                          : 'rounded-md border border-amber-200/60 bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-800'
+                      }
+                    >
                       {service.badge}
                     </span>
+                    <CardIcon
+                      className={`h-6 w-6 shrink-0 ${
+                        isWindows ? 'text-blue-600' : 'text-amber-700'
+                      }`}
+                      aria-hidden="true"
+                    />
                   </div>
-                  <h3 className="mt-4 text-xl font-bold text-slate-900">
+
+                  <h3 className="mb-2 text-xl font-bold text-slate-900">
                     {service.title}
                   </h3>
-                  <p className="mt-1.5 text-sm text-slate-600">
+                  <p className="mb-6 text-sm leading-relaxed text-slate-600">
                     {service.description}
                   </p>
+
+                  <div className="mb-8 space-y-3">
+                    {service.specs.map((spec, specIdx) => {
+                      const SpecIcon = specIcons[specIdx] ?? BadgeCheck;
+                      return (
+                        <div
+                          key={spec.title}
+                          className="flex items-start gap-3 rounded-xl border border-slate-200 bg-[#F8FAFC] p-3.5"
+                        >
+                          <SpecIcon
+                            className={`mt-0.5 h-4 w-4 shrink-0 ${
+                              isWindows ? 'text-blue-600' : 'text-amber-700'
+                            }`}
+                            aria-hidden="true"
+                          />
+                          <div>
+                            <span className="block text-sm font-semibold text-slate-900">
+                              {spec.title}
+                            </span>
+                            <span className="text-xs text-slate-600">
+                              {spec.subtitle}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                <ul className="mt-5 space-y-2.5 border-t border-slate-100 pt-4">
-                  {service.highlights.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2.5 text-sm font-medium text-slate-800"
-                    >
-                      <Check
-                        className="h-4 w-4 shrink-0 text-emerald-600 mt-0.5"
-                        aria-hidden="true"
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <a
+                  href={`tel:${contact.phoneRaw}`}
+                  className={
+                    isWindows
+                      ? 'flex min-h-12 w-full items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700 transition-colors'
+                      : 'flex min-h-12 w-full items-center justify-center rounded-xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-100 transition-colors'
+                  }
+                >
+                  {service.ctaLabel}
+                </a>
+              </article>
             );
           })}
         </div>

@@ -20,21 +20,21 @@ test.describe('GPS & PC Service Landing Page', () => {
 
     await expect(
       page.getByRole('heading', {
-        name: /Українська мова та свіжі карти для GPS-навігаторів/,
+        name: /Свіжі карти Європи 2026 та прошивка GPS-навігаторів/,
       })
     ).toBeVisible();
 
     await page.getByRole('button', { name: 'EN', exact: true }).click();
     await expect(
       page.getByRole('heading', {
-        name: /Ukrainian Localization & Europe Maps for GPS Navigators/,
+        name: /Europe 2026 Maps & GPS Navigator Firmware/,
       })
     ).toBeVisible();
 
     await page.getByRole('button', { name: 'UA', exact: true }).click();
     await expect(
       page.getByRole('heading', {
-        name: /Українська мова та свіжі карти для GPS-навігаторів/,
+        name: /Свіжі карти Європи 2026 та прошивка GPS-навігаторів/,
       })
     ).toBeVisible();
 
